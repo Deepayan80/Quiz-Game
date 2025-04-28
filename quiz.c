@@ -5,9 +5,49 @@ void startQuiz();
 void displayQuestions();
 void showResults();
 
+typedef struct{
+    char question[256];
+    char optionA[100];
+    char optionB[100];
+    char optionC[100];
+    char optionD[100];
+    char correctOption;
+} QuizQuestion;
+
 int main(){
     int choice;
 
+    QuizQuestion questions[] = {
+
+        {
+            "What is the capital of France?",
+            "A. Berlin",
+            "B. Madrid",
+            "C. Paris",
+            "D. Rome",
+            'C'
+        },
+        {
+            "Which plannet is known as the red planet?",
+            "A. Earth",
+            "B. Mars",
+            "C. Jupiter",
+            "D. Venus",
+            'B'
+        },
+        {
+            "Who wrote the play 'Romeo and Juliet'?",
+            "A. William Shakespear",
+            "B. Charles Dicken",
+            "C. Mark Twain",
+            "D. Jain Austien",
+            'A'
+        }
+
+    };
+
+    int totalQuestions = sizeof(questions) / sizeof(questions[0]);
+    
     printf("==================================\n");
     printf("     Welcome to the Quiz Game     \n");
     printf("==================================\n");
