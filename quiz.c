@@ -14,38 +14,37 @@ typedef struct{
     char correctOption;
 } QuizQuestion;
 
+QuizQuestion questions[] = {
+
+    {
+        "What is the capital of France?",
+        "A. Berlin",
+        "B. Madrid",
+        "C. Paris",
+        "D. Rome",
+        'C'
+    },
+    {
+        "Which plannet is known as the red planet?",
+        "A. Earth",
+        "B. Mars",
+        "C. Jupiter",
+        "D. Venus",
+        'B'
+    },
+    {
+        "Who wrote the play 'Romeo and Juliet'?",
+        "A. William Shakespear",
+        "B. Charles Dicken",
+        "C. Mark Twain",
+        "D. Jain Austien",
+        'A'
+    }
+
+};
+
 int main(){
     int choice;
-
-    QuizQuestion questions[] = {
-
-        {
-            "What is the capital of France?",
-            "A. Berlin",
-            "B. Madrid",
-            "C. Paris",
-            "D. Rome",
-            'C'
-        },
-        {
-            "Which plannet is known as the red planet?",
-            "A. Earth",
-            "B. Mars",
-            "C. Jupiter",
-            "D. Venus",
-            'B'
-        },
-        {
-            "Who wrote the play 'Romeo and Juliet'?",
-            "A. William Shakespear",
-            "B. Charles Dicken",
-            "C. Mark Twain",
-            "D. Jain Austien",
-            'A'
-        }
-
-    };
-
     int totalQuestions = sizeof(questions) / sizeof(questions[0]);
     
     printf("==================================\n");
@@ -75,15 +74,48 @@ int main(){
 }
 
 void startQuiz(){
-    printf("Starting the quiz...!\n");
-    displayQuestions();
-    showResults();
+    // printf("Starting the quiz...!\n");
+    // displayQuestions();
+    
+    int score = 0;
+    char userAnswer;
+    int totalQuestions = sizeof(questions) / sizeof(questions[0]);
+
+    printf("\nStarting the Quiz\n\n");
+
+    for (int i = 0; i < totalQuestions; i++)
+    {
+        printf("Q%d: %s\n", i+1, questions[i].question);
+        printf("%s\n", questions[i].optionA);
+        printf("%s\n", questions[i].optionB);
+        printf("%s\n", questions[i].optionC);
+        printf("%s\n", questions[i].optionD);
+
+        printf("Your answer(A/B/C/D): ");
+        scanf(" %c", &userAnswer);
+
+        if (userAnswer == questions[i].correctOption || userAnswer == questions[i].correctOption + 32)
+        {
+            printf("✅ Correct!\n\n");
+            score++;
+        }
+        else{
+            printf("❌ Wrong! Correct Answer: %c\n\n", questions[i].correctOption);
+        }
+        
+    }
+    
+    showResults(score, totalQuestions);
 }
 
 void displayQuestions(){
     printf("Questions will be displayed here.\n");
 }
 
-void showResults(){
-    printf("Result will be shown here.\n");
+void showResults(int score, int total){
+    printf("=====================================\n");
+    printf("             Quiz Result             \n");
+    printf("=====================================\n");
+    printf("You scored %d out of %d\n", score, total);
+    printf("=====================================\n");
 }
