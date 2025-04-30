@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 void startQuiz();
 void displayQuestions();
@@ -91,8 +92,16 @@ void startQuiz(){
         printf("%s\n", questions[i].optionC);
         printf("%s\n", questions[i].optionD);
 
-        printf("Your answer(A/B/C/D): ");
-        scanf(" %c", &userAnswer);
+        do{
+            printf("Your answer(A/B/C/D): ");
+            scanf(" %c", &userAnswer);
+            userAnswer = toupper(userAnswer);
+
+            if (userAnswer < 'A' || userAnswer > 'D')
+            {
+                printf("Invalid option...! Please enter A,B,C or D.\n");
+            }
+        }while(userAnswer < 'A' || userAnswer > 'D');
 
         if (userAnswer == questions[i].correctOption || userAnswer == questions[i].correctOption + 32)
         {
