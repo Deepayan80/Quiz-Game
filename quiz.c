@@ -46,32 +46,49 @@ QuizQuestion questions[] = {
 
 int main(){
     int choice;
+    char playAgain;
     int totalQuestions = sizeof(questions) / sizeof(questions[0]);
     
     printf("==================================\n");
     printf("     Welcome to the Quiz Game     \n");
     printf("==================================\n");
-    printf("1. Start Quiz\n");
-    printf("2. Exit\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
 
-    switch (choice)
-    {
-    case 1:
-        startQuiz();
-        break;
+    do{
 
-    case 2:
-        printf("Thankyou for visiting...! Goodbye...!\n");
-        break;
+        printf("1. Start Quiz\n");
+        printf("2. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    default:
-        printf("Invalid choice...! Please restart the programme...!\n");
-        break;
-    }
+        switch (choice)
+        {
+        case 1:
+            startQuiz();
+            break;
+
+        case 2:
+            printf("Thankyou for visiting...! Goodbye...!\n");
+            break;
+
+        default:
+            printf("Invalid choice...! Please restart the programme...!\n");
+            break;
+        }
+
+        if (choice == 1)
+        {
+            printf("Do you want to play again...! Enter Your Choice (Y/N): ");
+            scanf(" %c", &playAgain);
+            playAgain = toupper(playAgain);
+        }
+        
+
+    }while(playAgain == 'Y');
+
+    printf("Thankyou for playing goodbye...!\n");
 
     return 0;
+    
 }
 
 void startQuiz(){
