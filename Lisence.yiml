@@ -1,0 +1,4 @@
+### ✅ 4. Optimization Tips
+- Replace repeated code with functions if any.
+- Use `const` where variables don’t change.
+- Ensure `#include` directives are minimal but complete (`stdio.h`, `ctype.h` etc.)

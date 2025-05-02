@@ -1,3 +1,13 @@
+/*
+ * File: quiz.c
+ * Project: Quiz Game in C
+ * Description: A console-based quiz game with scoring and replay functionality.
+ * Author: Deepayan Das
+ * Version: 1.0
+ * Date: May 2025
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -49,6 +59,7 @@ int main(){
     char playAgain;
     int totalQuestions = sizeof(questions) / sizeof(questions[0]);
     
+    // Display Quiz Header
     printf("==================================\n");
     printf("     Welcome to the Quiz Game     \n");
     printf("==================================\n");
